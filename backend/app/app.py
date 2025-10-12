@@ -15,13 +15,13 @@ app.add_middleware(
 )
 
 
-@app.middleware("http")
-async def verify_secret_header(request: Request, call_next):
-    if request.method == "OPTIONS":
-        return await call_next(request)
-    if request.headers.get("x-app-secret") != SECRET_KEY:
-        raise HTTPException(status_code=403, detail="Forbidden")
-    return await call_next(request)
+# @app.middleware("http")
+# async def verify_secret_header(request: Request, call_next):
+#     if request.method == "OPTIONS":
+#         return await call_next(request)
+#     if request.headers.get("x-app-secret") != SECRET_KEY:
+#         raise HTTPException(status_code=403, detail="Forbidden")
+#     return await call_next(request)
 
 app.include_router(root.router)
 app.include_router(data.router, prefix="/data")
