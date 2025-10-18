@@ -25,8 +25,7 @@ const createWindow = () => {
 	win = new BrowserWindow({
 		width: 1000,
 		height: 700,
-		resizable: false,
-		icon: path.join(process.env.VITE_PUBLIC, 'electron.svg'),
+		resizable: true,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.mjs'),
 			contextIsolation: true,

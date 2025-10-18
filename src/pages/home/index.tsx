@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 
 interface HomeResponse {
 	message: string
@@ -30,6 +31,7 @@ const Home = () => {
 		<div>
 			<p>Homepage</p>
 			{data && data.message}
+			<Link to='/record'>record</Link>
 		</div>
 	)
 }
