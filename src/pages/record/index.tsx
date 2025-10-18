@@ -1,3 +1,4 @@
+import { Banner, Paragraph, TextInput, Title } from '@/components'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Record() {
@@ -113,28 +114,15 @@ export default function Record() {
 		<div className='min-h-screen bg-gray-100 flex items-center justify-center px-6 py-10'>
 			<div className='w-full max-w-3xl space-y-8'>
 				<div className='text-center'>
-					<h1 className='text-3xl font-semibold text-gray-800 mb-2'>
-						Record a Story
-					</h1>
-					<p className='text-gray-600 max-w-xl mx-auto'>
+					<Title text='Record a Story' />
+					<Paragraph>
 						Kindly begin by entering your name. When you feel ready, click{' '}
 						<strong>Start Recording</strong>. Once your image appears, you may
 						begin your tribute. When your message is complete, press{' '}
 						<strong>Stop & Upload</strong> to save it.
-					</p>
+					</Paragraph>
 				</div>
-
-				{/* Success/Error Banner */}
-				{status === 'success' && (
-					<div className='bg-green-100 border border-green-400 text-green-800 px-4 py-3 rounded-lg text-center'>
-						Your message was uploaded successfully.
-					</div>
-				)}
-				{status === 'error' && (
-					<div className='bg-red-100 border border-red-400 text-red-800 px-4 py-3 rounded-lg text-center'>
-						There was an error uploading your message. Please try again.
-					</div>
-				)}
+				<Banner status={status} />
 
 				<div className='w-full aspect-video bg-black rounded-xl overflow-hidden'>
 					<video
@@ -146,14 +134,11 @@ export default function Record() {
 				</div>
 
 				<div>
-					<input
-						type='text'
-						placeholder='Your Full Name'
+					<TextInput
 						value={formData.name}
-						onChange={(e) =>
-							setFormData((prev) => ({ ...prev, name: e.target.value }))
+						onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+							setFormData((prev) => ({ ...prev, name: event.target.value }))
 						}
-						className='w-full px-5 py-4 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 text-gray-800'
 					/>
 				</div>
 
